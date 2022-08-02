@@ -21,6 +21,7 @@ function App() {
           cache: "default",
         }
       );
+      console.log(result);
       const data = await result.json();
       setActivities(data);
     };
