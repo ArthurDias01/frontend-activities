@@ -5,8 +5,22 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Accept", "application/json");
+      headers.append(
+        "Access-Control-Allow-Origin",
+        "https://vocal-cascaron-97e053.netlify.app"
+      );
+      headers.append("Access-Control-Allow-Credentials", "true");
       const result = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/activities`
+        `${process.env.REACT_APP_BACKEND_URL}/activities`,
+        {
+          method: "GET",
+          headers: myHeaders,
+          mode: "cors",
+          cache: "default",
+        }
       );
       const data = await result.json();
       setActivities(data);
